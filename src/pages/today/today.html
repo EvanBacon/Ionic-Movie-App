@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>New</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+
+
+  <ion-card color='primary' *ngFor='let item of links' (click)='clicked(item)'>
+    <img src="{{item.img}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.title}}
+      </ion-card-title>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-infinite-scroll *ngIf='links.length > 0' (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>

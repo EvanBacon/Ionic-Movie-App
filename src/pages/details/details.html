@@ -1,0 +1,136 @@
+<!--
+Generated template for the Details page.
+
+See http://ionicframework.com/docs/v2/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='primary'>
+    <ion-title>{{data['title']}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-card>
+    <ion-card-header>
+      {{data['title']}}
+
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <a href="{{data['video']}}">
+          <img src="{{data['img']}}" alt="IMAGE!">
+</a>
+        </ion-col>
+
+        <ion-col>
+          <p *ngFor='let detail of data["summary"]'>
+            {{detail}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-item text-wrap>
+        {{data['about']}}
+      </ion-item>
+
+
+      <ion-row>
+        <ion-col>
+          <a href="{{'http://www.imdb.com/find?ref_=nv_sr_fn&q=' + encode(data['title']) + '&s=all'}}">
+            <img src="http://ia.media-imdb.com/images/M/MV5BMTgyOTIzMTA0NV5BMl5BcG5nXkFtZTcwMTA3MDg2OA@@._V1_.png" alt="IMDB">
+          </a>
+
+        </ion-col>
+        <ion-col>
+          <a href="{{'https://en.wikipedia.org/wiki/' + encode(data['title'])}}">
+            <img src="https://en.wikipedia.org/static/images/project-logos/enwiki-2x.png" alt="IMDB">
+          </a>
+
+        </ion-col>
+
+      </ion-row>
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+  <ion-card>
+
+    <ion-card-header>
+      More Like This
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Add card content here! -->
+
+      <div class="wrap">
+
+        <div class="profile-slides" style="height: auto;" >
+          <div class='carousel-cell'  *ngFor="let movie of data['similar']" (click)="clicked(movie)">
+            <div class="fill square animated zoomIn">
+              <img src="{{movie.img}}" class="image"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      Links
+    </ion-card-header>
+    <ion-list no-lines>
+      <button ion-item *ngFor='let link of data["links"]' (click)="itemSelected(link)">
+        {{ link }}
+      </button>
+    </ion-list>
+  </ion-card>
+
+
+
+  <ion-card>
+
+    <ion-card-header>
+      Recommended
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Add card content here! -->
+
+      <div class="wrap">
+
+        <div class="profile-slides" style="height: auto;" >
+          <div class='carousel-cell'  *ngFor="let movie of data['recommended']" (click)="clicked(movie)">
+            <div class="fill square animated zoomIn">
+              <img src="{{movie.img}}" class="image"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+</ion-content>

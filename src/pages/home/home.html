@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>Featured</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Jelly TV!</h2>
+  <!-- <ion-row>
+    <ion-col *ngFor='let item of links' width-50>
+
+      <ion-card >
+        <img src="{{item.img}}"/>
+         <ion-card-content>
+           <ion-card-title>
+             {{item.title}}
+             </ion-card-title>
+           <p>
+             The most popular industrial group ever, and largely
+             responsible for bringing the music to a mass audience.
+           </p>
+         </ion-card-content>
+        </ion-card>
+
+    </ion-col>
+  </ion-row> -->
+
+
+  <ion-card color='primary' *ngFor='let item of links' (click)='clicked(item)'>
+    <img src="{{item.img}}"/>
+     <ion-card-content>
+       <ion-card-title>
+         {{item.title}}
+         </ion-card-title>
+       <!-- <p>
+         The most popular industrial group ever, and largely
+         responsible for bringing the music to a mass audience.
+       </p> -->
+     </ion-card-content>
+    </ion-card>
+
+
+
+        <ion-infinite-scroll *ngIf='links.length > 0' (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+
+
+
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+</ion-content>
